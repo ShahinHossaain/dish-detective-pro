@@ -7,6 +7,7 @@ import Main from "./Layouts/Main";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import Blogs from "./components/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () =>
+          fetch("https://dish-detective-server-shahinhossaain.vercel.app/"),
       },
       {
         path: "/login",
@@ -24,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blogs></Blogs>,
       },
     ],
   },

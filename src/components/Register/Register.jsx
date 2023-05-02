@@ -6,12 +6,21 @@ import { AuthContext } from "../../Provider/AuthProvider";
 function Register() {
   const { createUser } = useContext(AuthContext);
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
+
+  //   if (password.length < 6) {
+  //     setError("At least 6 character");
+  //   } else {
+  //     setError("");
+  //   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,7 +80,9 @@ function Register() {
           Password
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+          className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10 ${
+            error ? "border-b-red-500" : "border-b-green-500"
+          }`}
           id="password"
           name="password"
           type={showPassword ? "text" : "password"}
@@ -80,6 +91,7 @@ function Register() {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
+        {error && <p className="text-red-500">{error}</p>}
         <button
           className="absolute right-0 top-7 mt-3 mr-4"
           type="button"
@@ -110,17 +122,6 @@ function Register() {
           onChange={(event) => setPhotoURL(event.target.value)}
           required
         />
-        <button
-          className="absolute right-0 top-7 mt-3 mr-4"
-          type="button"
-          onClick={handlePasswordVisibility}
-        >
-          {showPassword ? (
-            <AiOutlineEyeInvisible size={20} />
-          ) : (
-            <AiOutlineEye size={20} />
-          )}
-        </button>
       </div>
       <div className="flex items-center justify-center">
         <button
