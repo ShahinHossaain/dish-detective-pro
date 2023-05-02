@@ -9,9 +9,9 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <div className="mt-20">
+      <div className="md:grid grid-cols-2 gap-5 mt-20 mx-8 md:mx-16">
         {chefs.map((chef) => (
-          <Chef chef={chef}></Chef>
+          <Chef key={chef.id} chef={chef}></Chef>
         ))}
       </div>
     </div>

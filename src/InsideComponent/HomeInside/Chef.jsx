@@ -1,19 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Chef = ({ chef }) => {
-  console.log(chef);
+  //   console.log(chef);
   const {
     chef_name,
     chef_photo,
     likes,
     number_of_recipes,
     years_of_experience,
+    id,
   } = chef;
   return (
     <div>
-      <div className="flex items-center justify-around mx-auto w-3/4 h-64 rounded-md shadow-md p-4">
+      <div className="flex items-center justify-around mx-auto gap-16 h-80 rounded-md shadow-md p-4">
         {/* Left side - chef photo */}
-        <div className="w-1/3 h-full">
+        <div className="w-1/2 h-full">
           <img
             src={chef_photo}
             alt="Chef"
@@ -22,7 +24,7 @@ const Chef = ({ chef }) => {
         </div>
 
         {/* Right side - chef information */}
-        <div className="w-2/3 px-4">
+        <div className=" w-1/2 px-4 ">
           <h2 className="text-lg font-bold mb-2">{chef_name}</h2>
           <p className="mb-2">
             Years of Experience:{" "}
@@ -35,9 +37,11 @@ const Chef = ({ chef }) => {
           <p className="mb-2">
             Likes: <span className="font-bold">{likes}</span>
           </p>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mr-2">
-            Details
-          </button>
+          <Link to={`/chef/${id}`}>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mr-2">
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

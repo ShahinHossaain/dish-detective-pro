@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Blogs from "./components/Blogs/Blogs";
+import ChefDetails from "./components/ChefDetails/ChefDetails";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/chef/:id",
+        element: <ChefDetails></ChefDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://dish-detective-server-shahinhossaain.vercel.app/${params.id}`
+          ),
       },
     ],
   },
