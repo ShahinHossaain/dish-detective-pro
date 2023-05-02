@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Recipies from "../../InsideComponent/ChefDetailsInside/Recipies";
 
 const ChefDetails = () => {
   const chef = useLoaderData();
@@ -12,16 +13,18 @@ const ChefDetails = () => {
     years_of_experience,
     id,
     bio,
+    recipes,
   } = chef;
   return (
     <div>
-      <div className="bg-gray-100 p-8 flex items-center justify-center">
-        <div className="max-w-4xl mx-auto flex items-center">
+      <div className="bg-gray-100 p-8 flex items-center justify-center ">
+        <div className="max-w-5xl mx-auto flex items-center gap-x-20">
           <img
-            className="w-32 h-32 rounded-full mr-8"
+            className="w-80 h-96 rounded-full mr-8"
             src={chef_photo}
             alt="Chef"
           />
+
           <div>
             <h1 className="text-3xl font-bold mb-2">Chef {chef_name}</h1>
             <p className="text-lg text-gray-600 mb-4">{bio}</p>
@@ -34,6 +37,11 @@ const ChefDetails = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div>
+        {recipes.map((recipe) => (
+          <Recipies></Recipies>
+        ))}
       </div>
     </div>
   );
