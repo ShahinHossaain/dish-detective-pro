@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
-
 import "@smastrom/react-rating/style.css";
-
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+
 const Recipies = ({ details, index }) => {
-  console.log(details);
   const { cooking_method, ingredients, recipe_name, recipe_photo, rating } =
     details;
-  console.log('*****"', details, rating);
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  const handleFavorite = () => {
+    setIsFavorited(true);
+  };
+
   return (
     <div className="mb-16">
       <div
@@ -29,8 +32,13 @@ const Recipies = ({ details, index }) => {
             </span>
             {<Rating style={{ maxWidth: 110 }} value={rating} readOnly />}
             <div className="ml-4">
-              <AwesomeButton type="danger" size="large">
-                Favorite
+              <AwesomeButton
+                type="danger"
+                size="large"
+                disabled={isFavorited}
+                onPress={handleFavorite}
+              >
+                {isFavorited ? "Favorited" : "Favorite"}
               </AwesomeButton>
             </div>
           </div>

@@ -6,10 +6,17 @@ import { TiInputCheckedOutline, TiInfo } from "react-icons/ti";
 
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 function Login() {
   const [error, setError] = useState("");
-  const { signInUser, setUser } = useContext(AuthContext);
+  const { signInUser, auth } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -39,6 +46,24 @@ function Login() {
         )
       );
     // TODO: Add logic to submit the form data
+  };
+
+  const handleGoogleSingIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   const handlePasswordVisibility = () => {
@@ -114,6 +139,10 @@ function Login() {
           {error}
         </p>
       )}
+      <div>
+        <button onClick={handleGoogleSingIn}>Google</button>
+        <button onClick={handleGithubSignIn}>Github</button>
+      </div>
     </form>
   );
 }
