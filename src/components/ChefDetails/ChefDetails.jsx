@@ -4,7 +4,7 @@ import Recipies from "../../InsideComponent/ChefDetailsInside/Recipies";
 
 const ChefDetails = () => {
   const chef = useLoaderData();
-  console.log(chef);
+  // console.log(chef);
   const {
     chef_name,
     chef_photo,

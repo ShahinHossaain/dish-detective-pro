@@ -8,8 +8,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
 
 const NavBar = () => {
-  const { user, auth } = useContext(AuthContext);
+  const { user, auth, setLoading } = useContext(AuthContext);
   const handleSignOut = () => {
+    setLoading(true);
     signOut(auth)
       .then()
       .catch((err) => console.log(err));

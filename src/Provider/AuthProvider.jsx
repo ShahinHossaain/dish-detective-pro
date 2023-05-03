@@ -13,12 +13,15 @@ import app from "../firebase/firebase.init";
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
 
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -27,6 +30,7 @@ const AuthProvider = ({ children }) => {
       // console.log("state changed to " + currentUser);
       console.log(currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
@@ -37,6 +41,8 @@ const AuthProvider = ({ children }) => {
     signInUser,
     auth,
     setUser,
+    setLoading,
+    loading,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };
