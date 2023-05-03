@@ -3,6 +3,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
 function Login() {
   const { signInUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
@@ -72,12 +75,10 @@ function Login() {
         </button>
       </div>
       <div className="flex items-center justify-center">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
+        <AwesomeButton type="danger" size="medium">
+          {" "}
           Sign In
-        </button>
+        </AwesomeButton>
       </div>
       <p>
         Not have an account{" "}

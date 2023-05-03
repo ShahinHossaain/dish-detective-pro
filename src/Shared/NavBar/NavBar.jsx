@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import ActiveLink from "../../InsideComponent/ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
 
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { signOut } from "firebase/auth";
 
 const NavBar = () => {
+  const { user, auth } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOut(auth)
+      .then((result) => console.log(result.user))
+      .catch((err) => console.log(err));
+  };
+  console.log(user);
   return (
     <div className="navbar relative z=10 w-full bg-green-500 text-white mx-auto px-6">
       <div className="navbar-start">
@@ -67,13 +76,30 @@ const NavBar = () => {
           alt=""
         />
       </div>
-      <div className="navbar-end">
-        <Link to="/login">
-          <AwesomeButton type="danger" size="medium">
-            Log In
-          </AwesomeButton>
-        </Link>
-      </div>
+      {!user && (
+        <div className="navbar-end">
+          <Link to="/login">
+            <AwesomeButton type="danger" size="medium">
+              Log In
+            </AwesomeButton>
+          </Link>
+        </div>
+      )}
+      {user && (
+        <div className="navbar-end">
+          <p className="font-thin mr-2 font-mono">{user.displayName}</p>
+          <img
+            src={user.photoURL}
+            alt=""
+            className="w-12 h-12 rounded-full mr-3"
+          />
+          <Link onClick={handleSignOut}>
+            <AwesomeButton type="danger" size="small">
+              Sign Out
+            </AwesomeButton>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

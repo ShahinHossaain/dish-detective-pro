@@ -2,7 +2,9 @@ import React from "react";
 
 const Recipies = ({ details, index }) => {
   console.log(details);
-  const { cooking_method, ingredients, recipe_name, recipe_photo } = details;
+  const { cooking_method, ingredients, recipe_name, recipe_photo, rating } =
+    details;
+  console.log('*****"', details, rating);
   return (
     <div className="mb-16">
       <div
@@ -16,6 +18,7 @@ const Recipies = ({ details, index }) => {
             alt={recipe_name}
             className="w-full h-full rounded-xl"
           />
+          <p>{rating} shahin</p>
         </div>
         <div className="p-4 w-3/5">
           <h2 className="text-xl font-semibold mb-2">{recipe_name}</h2>
