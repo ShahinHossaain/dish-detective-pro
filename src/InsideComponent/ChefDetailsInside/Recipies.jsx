@@ -1,5 +1,10 @@
 import React from "react";
+import { Rating } from "@smastrom/react-rating";
 
+import "@smastrom/react-rating/style.css";
+
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 const Recipies = ({ details, index }) => {
   console.log(details);
   const { cooking_method, ingredients, recipe_name, recipe_photo, rating } =
@@ -12,13 +17,23 @@ const Recipies = ({ details, index }) => {
           index % 2 === 0 && "flex-row-reverse"
         } items-center gap-5 shadow-md rounded-lg overflow-hidden`}
       >
-        <div className="w-2/5 h-96 p-5">
+        <div className="w-2/5 h-96 p-5 mb-16">
           <img
             src={recipe_photo}
             alt={recipe_name}
             className="w-full h-full rounded-xl"
           />
-          <p>{rating} shahin</p>
+          <div className="flex items-center mt-4">
+            <span className="text-xl font-bold mr-1 text-primary">
+              Rating :{" "}
+            </span>
+            {<Rating style={{ maxWidth: 110 }} value={rating} readOnly />}
+            <div className="ml-4">
+              <AwesomeButton type="danger" size="large">
+                Favorite
+              </AwesomeButton>
+            </div>
+          </div>
         </div>
         <div className="p-4 w-3/5">
           <h2 className="text-xl font-semibold mb-2">{recipe_name}</h2>

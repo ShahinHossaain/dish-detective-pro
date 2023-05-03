@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { CiBullhorn, CiCircleCheck } from "react-icons/ci";
 import { TiInputCheckedOutline, TiInfo } from "react-icons/ti";
@@ -10,8 +10,11 @@ import "react-awesome-button/dist/styles.css";
 import { updateProfile } from "firebase/auth";
 
 function Register() {
-  const { createUser, auth } = useContext(AuthContext);
-  // console.log(auth);
+  const { createUser, auth, user } = useContext(AuthContext);
+  // console.log(user);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -47,18 +50,20 @@ function Register() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Password:", photoURL);
+    // console.log("Name:", name);
+    // console.log("Email:", email);
+    // console.log("Password:", password);
+    // console.log("Password:", photoURL);
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,
         });
+
+        navigate(location.state.pathname || "/");
       })
       .catch((error) => console.log(error));
     // TODO: Add logic to submit the form data

@@ -1,26 +1,43 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { TiInputCheckedOutline, TiInfo } from "react-icons/ti";
 
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 function Login() {
-  const { signInUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { signInUser, setUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // console.log("Email:", email);
+    // console.log("Password:", password);
 
     signInUser(email, password)
-      .then((result) => console.log(result.user))
-      .catch((err) => console.log(err));
+      .then((result) => {
+        // setUser(result.user);
+        console.log("sata");
+        setError("");
+        navigate(location?.state?.pathname || "/");
+      })
+      .catch((err) =>
+        setError(
+          err.message
+            .slice(22, err.message.length - 2)
+            .split("-")
+            .join(" ")
+        )
+      );
     // TODO: Add logic to submit the form data
   };
 
@@ -82,11 +99,21 @@ function Login() {
       </div>
       <p>
         Not have an account{" "}
-        <Link to="/register" className="text-blue-500 underline">
+        <Link
+          to="/register"
+          state={location.state}
+          className="text-blue-500 underline"
+        >
           Register
         </Link>{" "}
         now
       </p>
+      {error && (
+        <p className="flex gap-2 items-center mt-3 text-red-500  text-sm uppercase">
+          <TiInfo className="text-xl"></TiInfo>
+          {error}
+        </p>
+      )}
     </form>
   );
 }

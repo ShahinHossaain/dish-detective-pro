@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Chef = ({ chef }) => {
   //   console.log(chef);
 
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   const {
     chef_name,
