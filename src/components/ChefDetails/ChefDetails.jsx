@@ -38,9 +38,9 @@ const ChefDetails = () => {
           </div>
         </div>
       </div>
-      <div>
-        {recipes.map((recipe) => (
-          <Recipies></Recipies>
+      <div className="mx-20 mt-20">
+        {recipes.map((recipe, index) => (
+          <Recipies details={recipe} index={index}></Recipies>
         ))}
       </div>
     </div>

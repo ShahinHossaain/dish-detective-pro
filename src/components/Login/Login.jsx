@@ -80,7 +80,11 @@ function Login() {
         </button>
       </div>
       <p>
-        Not have an account <Link to="/register">Register</Link>
+        Not have an account{" "}
+        <Link to="/register" className="text-blue-500 underline">
+          Register
+        </Link>{" "}
+        now
       </p>
     </form>
   );

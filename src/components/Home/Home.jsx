@@ -9,7 +9,10 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <div className="md:grid grid-cols-2 gap-5 mt-20 mx-8 md:mx-16">
+      <p className="text-center text-7xl font-serif font-bold mt-28">
+        World Class Chefs
+      </p>
+      <div className="md:grid grid-cols-2 mt-10 mx-8 md:mx-16">
         {chefs.map((chef) => (
           <Chef key={chef.id} chef={chef}></Chef>
         ))}

@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { CiBullhorn } from "react-icons/ci";
+
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 function Register() {
   const { createUser } = useContext(AuthContext);
@@ -16,12 +20,13 @@ function Register() {
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
 
-  //   if (password.length < 6) {
-  //     setError("At least 6 character");
-  //   } else {
-  //     setError("");
-  //   }
-
+  const handlePassword = (e) => {
+    const passwordInput = e.target.value;
+    setPassword(passwordInput);
+    if (passwordInput.length < 6)
+      setError("Password must be at least 6 character long.");
+    else setError("");
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Name:", name);
@@ -88,10 +93,15 @@ function Register() {
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={handlePassword}
           required
         />
-        {error && <p className="text-red-500">{error}</p>}
+        {error && (
+          <p className="text-red-500">
+            <CiBullhorn></CiBullhorn>
+            {error}
+          </p>
+        )}
         <button
           className="absolute right-0 top-7 mt-3 mr-4"
           type="button"
@@ -124,15 +134,16 @@ function Register() {
         />
       </div>
       <div className="flex items-center justify-center">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
+        <AwesomeButton type="danger" size="medium">
+          {" "}
           Sign In
-        </button>
+        </AwesomeButton>
       </div>
       <p>
-        Not have an account <Link to="/register">Register</Link>
+        Have an account{" "}
+        <Link to="/login" className="text-blue-500 underline">
+          Login
+        </Link>
       </p>
     </form>
   );

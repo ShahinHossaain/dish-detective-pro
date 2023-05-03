@@ -2,9 +2,12 @@ import React from "react";
 import ActiveLink from "../../InsideComponent/ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
 
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
 const NavBar = () => {
   return (
-    <div className="navbar relative z=10 w-full bg-slate-300 mx-auto px-6">
+    <div className="navbar relative z=10 w-full bg-green-500 text-white mx-auto px-6">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,7 +68,11 @@ const NavBar = () => {
         />
       </div>
       <div className="navbar-end">
-        <Link to="/login">Log In</Link>
+        <Link to="/login">
+          <AwesomeButton type="danger" size="medium">
+            Log In
+          </AwesomeButton>
+        </Link>
       </div>
     </div>
   );
