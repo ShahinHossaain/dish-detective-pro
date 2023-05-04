@@ -18,30 +18,47 @@ const ChefDetails = () => {
     recipes,
   } = chef;
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/free-vector/collection-handrawn-elements-fast-food_125540-314.jpg?size=626&ext=jpg')",
+      }}
+      className="pb-20"
+    >
       <ToastContainer />
-      <div className="bg-gray-100 p-8 flex items-center justify-center ">
+      <div className=" p-8 flex items-center justify-center text-white bg-black">
         <div className="max-w-5xl mx-auto flex items-center gap-x-20">
           <img
-            className="w-80 h-96 rounded-full mr-8"
+            className="w-80 h-96 rounded-full mr-8 border-2 border-green-500"
             src={chef_photo}
             alt="Chef"
           />
 
           <div>
-            <h1 className="text-3xl font-bold mb-2">Chef {chef_name}</h1>
-            <p className="text-lg text-gray-600 mb-4">{bio}</p>
-            <p className="text-lg text-gray-600 mb-2">Likes: {likes}</p>
-            <p className="text-lg text-gray-600 mb-2">
-              Number of Recipes: {number_of_recipes}
+            <h1 className="text-3xl font-bold mb-2 text-green-500">
+              Chef {chef_name}
+            </h1>
+            <p className="text-lg mb-4">{bio}</p>
+            <p className="text-lg mb-2">
+              <span className="font-semibold text-green-500">Likes :</span>{" "}
+              {likes}
             </p>
-            <p className="text-lg text-gray-600 mb-2">
-              Years of Experience: {years_of_experience}
+            <p className="text-lg mb-2">
+              <span className="font-semibold text-green-500">
+                Number of Recipes:
+              </span>{" "}
+              {number_of_recipes}
+            </p>
+            <p className="text-lg mb-2">
+              <span className="font-semibold text-green-500">
+                Years of Experience:
+              </span>{" "}
+              {years_of_experience}
             </p>
           </div>
         </div>
       </div>
-      <div className="mx-20 mt-20">
+      <div className="mx-7 md:mx-20 mt-20 card shadow-xl bg-base-200">
         {recipes.map((recipe, index) => (
           <Recipies details={recipe} index={index} toast={toast}></Recipies>
         ))}

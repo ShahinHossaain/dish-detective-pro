@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LazyLoad from "react-lazy-load";
-
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 const Chef = ({ chef }) => {
   //   console.log(chef);
 
@@ -37,9 +38,10 @@ const Chef = ({ chef }) => {
           Likes: <span className="font-bold">{likes}</span>
         </p>
         <Link to={`/chef/${id}`}>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mr-2">
-            Details
-          </button>
+          <AwesomeButton type="whatsapp" size="medium">
+            {" "}
+            View Recipes
+          </AwesomeButton>
         </Link>
       </div>
     </div>

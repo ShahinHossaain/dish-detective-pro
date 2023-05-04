@@ -17,13 +17,13 @@ const Recipies = ({ details, index, toast }) => {
   };
 
   return (
-    <div className="mb-16">
+    <div className="mb-16 mx-10 my-10">
       <div
-        className={`flex ${
+        className={`md:flex ${
           index % 2 === 0 && "flex-row-reverse"
-        } items-center gap-5 shadow-md rounded-lg overflow-hidden`}
+        }  items-center gap-5 shadow-md rounded-lg overflow-hidden`}
       >
-        <div className="w-2/5 h-96 p-5 mb-16">
+        <div className="md:w-2/5 h-96 p-5 mb-16">
           <img
             src={recipe_photo}
             alt={recipe_name}
@@ -36,7 +36,7 @@ const Recipies = ({ details, index, toast }) => {
             {<Rating style={{ maxWidth: 110 }} value={rating} readOnly />}
             <div className="ml-4">
               <AwesomeButton
-                type="danger"
+                type="whatsapp"
                 size="large"
                 disabled={isFavorited}
                 onPress={() => handleFavorite(recipe_name)}
@@ -46,7 +46,7 @@ const Recipies = ({ details, index, toast }) => {
             </div>
           </div>
         </div>
-        <div className="p-4 w-3/5">
+        <div className="p-4 md:w-3/5">
           <h2 className="text-xl font-semibold mb-2">{recipe_name}</h2>
           <p className="text-gray-700 mb-4">{cooking_method}</p>
           <h3 className="text-lg font-semibold mb-2">Ingredients:</h3>

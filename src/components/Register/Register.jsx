@@ -63,9 +63,9 @@ function Register() {
           photoURL: photoURL,
         });
 
-        navigate(location.state.pathname || "/");
+        navigate(location?.state?.pathname || "/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error));
     // TODO: Add logic to submit the form data
   };
 
@@ -74,139 +74,150 @@ function Register() {
   };
 
   return (
-    <form className="w-full max-w-sm mx-auto mt-10" onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-          Name
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="name"
-          type="text"
-          name="name"
-          placeholder="Your name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-        />
-      </div>
-      <div className="mb-4 relative">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
-          Email
-        </label>
-        <input
-          className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10 mr-5 ${
-            emailError ? "border-b-red-500" : "border-b-green-500"
-          }`}
-          id="email"
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmail}
-          required
-        />
-        {emailError && (
-          <p className="flex items-center gap-2 text-red-500 text-sm">
-            <TiInfo className="text-xl"></TiInfo>
-            {emailError}
-          </p>
-        )}
-        <button
-          className="absolute right-0 top-7 mt-3 mr-3"
-          type="button"
-          onClick={handlePasswordVisibility}
-        >
-          {!emailError && (
-            <TiInputCheckedOutline
-              className="text-green-600 font-bolder"
-              size={25}
-            ></TiInputCheckedOutline>
-          )}
-        </button>
-      </div>
-
-      <div className="mb-4 relative">
-        <label
-          className="block text-gray-700 font-bold mb-2"
-          htmlFor="password"
-        >
-          Password
-        </label>
-        <input
-          className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10 ${
-            error ? "border-b-red-500" : "border-b-green-500"
-          }`}
-          id="password"
-          name="password"
-          type={showPassword ? "text" : "password"}
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-          required
-        />
-        {error && (
-          <p className="flex items-center gap-2 text-red-500 text-sm">
-            <CiBullhorn></CiBullhorn>
-            {error}
-          </p>
-        )}
-        <button
-          className="absolute right-0 top-7 mt-3 mr-4"
-          type="button"
-          onClick={handlePasswordVisibility}
-        >
-          {showPassword ? (
-            <AiOutlineEyeInvisible size={20} />
-          ) : (
-            <AiOutlineEye size={20} />
-          )}
-        </button>
-      </div>
-
-      <div className="mb-4 relative">
-        <label
-          className="block text-gray-700 font-bold mb-2"
-          htmlFor="password"
-        >
-          Photo URL
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
-          id="photoURL"
-          name="photoURL"
-          type="url"
-          placeholder="photo URL"
-          value={photoURL}
-          onChange={(event) => setPhotoURL(event.target.value)}
-          required
-        />
-      </div>
-      {!error && !emailError && (
-        <div className="flex items-center justify-center">
-          <AwesomeButton type="danger" size="medium">
-            {" "}
-            Register
-          </AwesomeButton>
+    <div
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/free-vector/collection-handrawn-elements-fast-food_125540-314.jpg?size=626&ext=jpg')",
+      }}
+      className="py-20"
+    >
+      <form
+        className="w-full max-w-lg mx-auto card shadow-lg bg-base-200 p-12 opacity-95 text-black"
+        onSubmit={handleSubmit}
+      >
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Your name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
         </div>
-      )}
-      {(error || emailError) && (
-        <div className="flex items-center justify-center">
+        <div className="mb-4 relative">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10 mr-5 ${
+              emailError ? "border-b-red-500" : "border-b-green-500"
+            }`}
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleEmail}
+            required
+          />
+          {emailError && (
+            <p className="flex items-center gap-2 text-red-500 text-sm">
+              <TiInfo className="text-xl"></TiInfo>
+              {emailError}
+            </p>
+          )}
           <button
-            className="bg-primary px-5 py-3 rounded-xl text-white"
-            disabled
+            className="absolute right-0 top-7 mt-3 mr-3"
+            type="button"
+            onClick={handlePasswordVisibility}
           >
-            Register
+            {!emailError && (
+              <TiInputCheckedOutline
+                className="text-green-600 font-bolder"
+                size={25}
+              ></TiInputCheckedOutline>
+            )}
           </button>
         </div>
-      )}
-      <p>
-        Have an account{" "}
-        <Link to="/login" className="text-blue-500 underline">
-          Login
-        </Link>
-      </p>
-    </form>
+
+        <div className="mb-4 relative">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10 ${
+              error ? "border-b-red-500" : "border-b-green-500"
+            }`}
+            id="password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={handlePassword}
+            required
+          />
+          {error && (
+            <p className="flex items-center gap-2 text-red-500 text-sm">
+              <CiBullhorn></CiBullhorn>
+              {error}
+            </p>
+          )}
+          <button
+            className="absolute right-0 top-7 mt-3 mr-4"
+            type="button"
+            onClick={handlePasswordVisibility}
+          >
+            {showPassword ? (
+              <AiOutlineEyeInvisible size={20} />
+            ) : (
+              <AiOutlineEye size={20} />
+            )}
+          </button>
+        </div>
+
+        <div className="mb-4 relative">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="password"
+          >
+            Photo URL
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+            id="photoURL"
+            name="photoURL"
+            type="url"
+            placeholder="photo URL"
+            value={photoURL}
+            onChange={(event) => setPhotoURL(event.target.value)}
+            required
+          />
+        </div>
+        {!error && !emailError && (
+          <div className="flex items-center justify-center">
+            <AwesomeButton type="danger" size="medium">
+              {" "}
+              Register
+            </AwesomeButton>
+          </div>
+        )}
+        {(error || emailError) && (
+          <div className="flex items-center justify-center">
+            <button
+              className="bg-primary px-5 py-3 rounded-xl text-white"
+              disabled
+            >
+              Register
+            </button>
+          </div>
+        )}
+        <p>
+          Have an account{" "}
+          <Link to="/login" className="text-blue-500 underline">
+            Login
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 }
 
