@@ -6,6 +6,7 @@ import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
+import { FaSearchengin } from "react-icons/fa";
 
 const NavBar = () => {
   const { user, auth, setLoading } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const NavBar = () => {
   };
   console.log(user);
   return (
-    <div className="navbar relative z=10 w-full bg-green-500 text-white mx-auto px-6">
+    <div className="navbar border-4 border-green-500 relative z=10 w-full bg-black rounded-sm text-green-500 font-bold mx-auto px-6">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,10 +53,15 @@ const NavBar = () => {
           </ul>
         </div>
         <img
-          src="https://i.ibb.co/nmP4661/logo.png"
-          className="w-36 rounded-md hidden md:inline-block"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ70ZVQNDUcNB6vdIFsAehXU_hCI3AqmSxrUA&usqp=CAU"
+          className="w-14 hidden md:inline-block border-green-500 border-2 rounded-full"
           alt=""
         />
+        <p className="hidden  o_font1 text-lg md:flex items-center ml-1 uppercase">
+          Dish
+          <FaSearchengin className="text-2xl mr-1" />
+          pro
+        </p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -70,35 +76,48 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-center md:hidden">
+      <div className="navbar-center md:hidden border-green-500 border-2 rounded-full">
         <img
-          src="https://i.ibb.co/nmP4661/logo.png"
-          className="w-36 rounded-md"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ70ZVQNDUcNB6vdIFsAehXU_hCI3AqmSxrUA&usqp=CAU"
+          className="w-12 "
           alt=""
         />
       </div>
       {!user && (
         <div className="navbar-end">
           <Link to="/login">
-            <AwesomeButton type="danger" size="medium">
+            <AwesomeButton type="whatsapp" size="medium">
               Log In
             </AwesomeButton>
           </Link>
         </div>
       )}
       {user && (
-        <div className="navbar-end">
-          <p className="font-thin mr-2 font-mono">{user.displayName}</p>
-          <img
-            src={user.photoURL}
-            alt=""
-            className="w-12 h-12 rounded-full mr-3"
-          />
-          <Link onClick={handleSignOut}>
-            <AwesomeButton type="danger" size="small">
-              Sign Out
-            </AwesomeButton>
-          </Link>
+        <div className="navbar-end h-6">
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="m-1">
+              <img
+                src={user.photoURL}
+                alt=""
+                className="w-12 h-12 rounded-full mr-3 border-2 border-green-500"
+              />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-gray-800 rounded-box w-52"
+            >
+              <li>
+                <p className=" mr-2 font-mono">{user.displayName}</p>
+              </li>
+              <li>
+                <Link onClick={handleSignOut}>
+                  <AwesomeButton type="whatsapp" size="medium">
+                    Sign Out
+                  </AwesomeButton>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       )}
     </div>

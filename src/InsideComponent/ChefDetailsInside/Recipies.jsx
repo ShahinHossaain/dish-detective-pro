@@ -4,13 +4,16 @@ import "@smastrom/react-rating/style.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
-const Recipies = ({ details, index }) => {
+const Recipies = ({ details, index, toast }) => {
+  const notify = () => toast("Wow so easy!");
+
   const { cooking_method, ingredients, recipe_name, recipe_photo, rating } =
     details;
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const handleFavorite = () => {
+  const handleFavorite = (recipy) => {
     setIsFavorited(true);
+    toast(recipy + " added to favorites");
   };
 
   return (
@@ -36,7 +39,7 @@ const Recipies = ({ details, index }) => {
                 type="danger"
                 size="large"
                 disabled={isFavorited}
-                onPress={handleFavorite}
+                onPress={() => handleFavorite(recipe_name)}
               >
                 {isFavorited ? "Favorited" : "Favorite"}
               </AwesomeButton>

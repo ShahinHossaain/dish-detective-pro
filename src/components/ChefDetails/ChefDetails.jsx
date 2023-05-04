@@ -1,6 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Recipies from "../../InsideComponent/ChefDetailsInside/Recipies";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ChefDetails = () => {
   const chef = useLoaderData();
@@ -17,6 +19,7 @@ const ChefDetails = () => {
   } = chef;
   return (
     <div>
+      <ToastContainer />
       <div className="bg-gray-100 p-8 flex items-center justify-center ">
         <div className="max-w-5xl mx-auto flex items-center gap-x-20">
           <img
@@ -40,7 +43,7 @@ const ChefDetails = () => {
       </div>
       <div className="mx-20 mt-20">
         {recipes.map((recipe, index) => (
-          <Recipies details={recipe} index={index}></Recipies>
+          <Recipies details={recipe} index={index} toast={toast}></Recipies>
         ))}
       </div>
     </div>

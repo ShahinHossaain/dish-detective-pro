@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-slate-900 text-slate-300 px-8 md:px-20 py-10 mt-24">
+    <div className="bg-slate-900 text-slate-300 px-8 md:px-20 py-10">
       <div className="grid grid-cols-3 gap-2 md:grid-cols-5 ">
         <div>
           <p className="mb-2 font-medium text-xl">Dish Detective Pro</p>

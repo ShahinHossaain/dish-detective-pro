@@ -11,6 +11,7 @@ import Blogs from "./components/Blogs/Blogs";
 import ChefDetails from "./components/ChefDetails/ChefDetails";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import PrivatetRouter from "./PrivateRouter/PrivatetRouter";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
           fetch(
             `https://dish-detective-server-shahinhossaain.vercel.app/${params.id}`
           ),
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "/*",

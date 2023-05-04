@@ -4,10 +4,10 @@ const Blogs = () => {
   return (
     <div className="mt-10">
       <p className="text-center text-3xl md:text-5xl font-sans font-bold">
-        <span className="text-violet-600">F</span>AQ
+        <span className="text-green-600">F</span>AQ
       </p>
-      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-violet-100 ">
-        <p className="text-violet-600 text-lg md:text-xl font-mono font-medium mb-4">
+      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-green-100 ">
+        <p className="text-green-600 text-lg md:text-xl font-mono font-medium mb-4">
           1)) Tell us the differences between uncontrolled and controlled
           components?
         </p>
@@ -29,8 +29,8 @@ const Blogs = () => {
           can lead to unexpected behavior.
         </p>
       </div>
-      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-violet-100">
-        <p className="text-violet-600 text-lg md:text-xl font-mono font-medium mb-4">
+      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-green-100">
+        <p className="text-green-600 text-lg md:text-xl font-mono font-medium mb-4">
           2)) How to validate React props using PropTypes?
         </p>
         <p>
@@ -50,8 +50,8 @@ const Blogs = () => {
           development process and make your code more reliable and maintainable.
         </p>
       </div>
-      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-violet-100">
-        <p className="text-violet-600 text-lg md:text-xl font-mono font-medium mb-4">
+      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-green-100">
+        <p className="text-green-600 text-lg md:text-xl font-mono font-medium mb-4">
           3)) Tell us the difference between nodejs and express js?
         </p>
         <p>
@@ -80,8 +80,8 @@ const Blogs = () => {
           APIs on top of Node.js.
         </p>
       </div>
-      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-violet-100">
-        <p className="text-violet-600 text-lg md:text-xl font-mono font-medium mb-4">
+      <div className="card shadow-lg p-4 md:p-10 m-4 md:m-10 bg-green-100">
+        <p className="text-green-600 text-lg md:text-xl font-mono font-medium mb-4">
           4)) What is a custom hook, and why will you create a custom hook?
         </p>
         <p>
