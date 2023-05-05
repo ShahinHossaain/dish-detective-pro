@@ -5,6 +5,7 @@ import Chef from "../../InsideComponent/HomeInside/Chef";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import LazyLoad from "react-lazy-load";
+
 import {
   faEnvelope,
   faUserCheck,
@@ -121,7 +122,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="card shadow-lg bg-base-200 mt-16 md:mt-28 mx-2 md:mx-16 py-4 md:py-8 border-4 border-black">
+      <div className="card shadow-lg bg-base-200 mt-16 md:mt-28 mx-2 md:mx-16 py-4 md:py-8 border-4 border-black overflow-hidden">
         <p className="text-center o_font3 text-4xl md:text-5xl text-black font-serif font-bold ">
           <span className="text-red-600">Top</span>{" "}
           <span className="text-green-500">Ten</span> Food Items...
