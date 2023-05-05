@@ -6,12 +6,17 @@ const PrivatetRouter = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
   console.log(location);
-  if (loading)
+
+  if (loading) {
     return (
-      <p className="text-center">
-        Loading <progress className="progress w-56"></progress>
-      </p>
+      <div className="h-screen flex justify-center items-center">
+        <button className="btn btn-success btn-lg loading justify-center items-center">
+          loading
+        </button>
+      </div>
     );
+  }
+
   if (!user) return <Navigate to="/login" state={location}></Navigate>;
   return children;
 };

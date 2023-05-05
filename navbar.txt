@@ -8,9 +8,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import { FaSearchengin } from "react-icons/fa";
 
-import "react-tooltip/dist/react-tooltip.css";
-import { Tooltip as ReactTooltip } from "react-tooltip";
-
 const NavBar = () => {
   const { user, auth, setLoading } = useContext(AuthContext);
   const handleSignOut = () => {
@@ -96,31 +93,15 @@ const NavBar = () => {
         </div>
       )}
       {user && (
-        <div className="navbar-end h-6">
+        <div className="navbar-end h-6" title={user.displayName}>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="m-1">
               <img
                 src={user.photoURL}
                 alt=""
-                id="userProfile"
                 className="w-12 h-12 rounded-full mr-3 border-2 border-green-500"
               />
             </label>
-
-            <ReactTooltip
-              anchorId="userProfile"
-              place="bottom"
-              variant="success"
-              content={user.displayName}
-              className="font-bold text-black z-10"
-              style={{
-                fontWeight: "bold",
-                borderRadius: "10px",
-                fontSize: "18px",
-                backgroundColor: "#22c55e",
-                padding: "7px",
-              }}
-            />
             <ul
               tabIndex={0}
               className="dropdown-content menu p-2 shadow bg-gray-800 rounded-box w-52"

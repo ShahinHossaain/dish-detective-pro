@@ -37,9 +37,9 @@ const Footer = () => {
           <p className="mb-2">524 Broadway , NYC</p>
           <p className="mb-2">+1 777 - 978 - 5570</p>
           <div className="flex gap-3">
-            <img src="../../../public/images/twitter.png" alt="" />
-            <img src="../../../public/images/youtube.png" alt="" />
-            <img src="../../../public/images/fb.png" alt="" />
+            <img src="https://i.ibb.co/5FjM7Hv/twitter.png" alt="" />
+            <img src="https://i.ibb.co/sCFrFQB/youtube.png" alt="" />
+            <img src="https://i.ibb.co/qgzhbNW/fb.png" alt="" />
           </div>
         </div>
       </div>
